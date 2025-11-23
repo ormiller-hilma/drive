@@ -17,17 +17,14 @@ router.get("/:id", async function (req, res, next) {
 });
 
 router.get("/:id/:file", async function (req, res, next) {
-  console.log("blabla");
   const id = req.params.id;
   const file = req.params.file;
   const path = "../server/database/";
   try {
-    const dirArray = await runOpenFile(path + `${id}/${file}`);
-
-    console.log("dirArray: ", dirArray);
-    res.send({ content: dirArray });
+    const content = await runOpenFile(path + `${id}/${file}`);
+    res.send({ content });
   } catch {
-    res.send("USER DOES NOT EXIST");
+    res.send({ err: "PATH DOES NOT EXIST" });
   }
 });
 
