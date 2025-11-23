@@ -5,15 +5,26 @@ var runOpenFile = require("../openFile");
 var runDelete = require("../delete");
 const runCreate = require("../create");
 
-router.get("/:id", async function (req, res, next) {
-  const id = req.params.id;
-  console.log("id: ", id);
+
+router.get("/*", async function (req, res, next) {
+  const url = req.url;
+  console.log(url)
+
+
   const path = "../server/database/";
   try {
-    const dirArray = await runLS(path + `${id}`);
+    const dirArray = await runLS(path + `${url}`);
     res.send({ arr: dirArray });
   } catch {
-    res.send("USER DOES NOT EXIST");
+
+    // try open
+    try {
+      const content = await runOpenFile(path + url);
+      res.send({ content });
+    } catch {
+      res.send({ err: "PATH DOES NOT EXIST" });
+    }
+
   }
 });
 
@@ -28,6 +39,8 @@ router.get("/:id/:file", async function (req, res, next) {
     res.send({ err: "PATH DOES NOT EXIST" });
   }
 });
+
+
 
 router.delete("/:id/:file", async function (req, res, next) {
   const id = req.params.id;
