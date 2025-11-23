@@ -2,7 +2,8 @@ var express = require("express");
 var router = express.Router();
 var runLS = require("../ls");
 var runOpenFile = require("../openFile");
-var runDelete = require("../delete")
+var runDelete = require("../delete");
+const runCreate = require("../create");
 
 router.get("/:id", async function (req, res, next) {
   const id = req.params.id;
@@ -36,7 +37,20 @@ router.delete("/:id/:file", async function (req, res, next) {
     const content = await runDelete(path + `${id}/${file}`);
     res.send({ content });
   } catch {
-    res.send({ err: "PATH DOES NOT EXIST" });
+    res.send({ err: "COULD NOT DELETE" });
+  }
+});
+
+router.post("/:id/:file", async function (req, res, next) {
+  const id = req.params.id;
+  const file = req.params.file;
+  const body = req.body
+  const path = "../server/database";
+  try {
+    const content = await runCreate(`${path}/${id}/`, file, body.content);
+    res.send({ content });
+  } catch {
+    res.send({ err: "COULD NOT CREATE" });
   }
 });
 
