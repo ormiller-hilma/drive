@@ -14,7 +14,7 @@ router.get("/*", async function (req, res, next) {
   const path = "../server/database/";
   try {
     const dirArray = await runLS(path + `${url}`);
-    res.send({ arr: dirArray });
+    res.send({ content: dirArray });
   } catch {
 
     // try open
