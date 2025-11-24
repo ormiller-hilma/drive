@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("node:path");
 
 async function runDelete(path) {
+
   fs.unlink(path, (err) => {
     if (err) {
       if (err.code === 'ENOENT') {
@@ -9,11 +10,17 @@ async function runDelete(path) {
         return "Could not delete Folder does not exist"
       }
       else {
-        console.log(err);
+        fs.rmdir(path, { recursive: true, force: true }, (err) => {
+          if (err)
+            console.log('err: ', err);
+        })
+        // console.log(err);
         return "ERROR"
       }
     }
     return "deleted folder";
   })
+
+
 }
 module.exports = runDelete;

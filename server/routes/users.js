@@ -57,7 +57,6 @@ router.post("/:id/:path(*)?/:file", async function (req, res, next) {
 
   const body = req.body
   const path = "../server/database/users";
-  console.log(`${path}/${id}/${wildcard}/`);
   try {
     const content = await runCreate(`${path}/${id}/${wildcard}/`, file, body.content);
     res.send({ content });
