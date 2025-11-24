@@ -18,15 +18,19 @@ function AddFiles({ path, retriggerEffect, user }) {
 
   return (
     <>
+      <label for="fileName">File name:</label>
       <input
+        name="fileName"
         type="text"
         onChange={({ target }) => SetFileText(target.value)}
         value={fileText}
       />
 
       <br />
+      <label for="fileContent">File content:</label>
 
       <input
+        name="fileContent"
         type="text"
         onChange={({ target }) => SetFileContent(target.value)}
         value={fileContent}
