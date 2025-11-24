@@ -4,7 +4,7 @@ import Folder from "./Folder";
 import AddFiles from "./AddFiles";
 import { Form, useMatch } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 function Folders() {
   const { username } = useParams();
   const userpath = `/${username}`;
@@ -43,7 +43,22 @@ function Folders() {
   return (
     <>
       <h1>all the Folders</h1>
-
+      <div>
+        <Link to={`/${username}`}>Home</Link>
+        {filePath &&
+          filePath.split("/").map((part, index) => {
+            const pathUpToHere = filePath
+              .split("/") // ["folder2", "file1.txt"] → split the path into parts
+              .slice(0, index + 1) // take all parts up to the current one (e.g., first iteration: ["folder2"], second: ["folder2", "file1.txt"])
+              .join("/"); // join them back into a string to form the partial path (e.g., "folder2", "folder2/file1.txt")
+            return (
+              <span key={index}>
+                {" / "}
+                <Link to={`/${username}/${pathUpToHere}`}>{part}</Link>
+              </span>
+            );
+          })}
+      </div>
       <AddFiles
         path={filePath}
         retriggerEffect={retriggerEffect}
