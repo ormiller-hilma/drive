@@ -56,6 +56,7 @@ function Folders() {
                 retriggerEffect={retriggerEffect}
                 filePath={fullPath}
                 foldername={e}
+                currentFiles={data}
               />
               <br />
             </Fragment>
