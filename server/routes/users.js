@@ -8,7 +8,7 @@ const runCreate = require("../create");
 
 router.get("/*", async function (req, res, next) {
   const url = req.url;
-  const path = "../server/database/";
+  const path = "../server/database/users/";
   try {
     const dirArray = await runLS(path + `${url}`);
     res.send({ content: dirArray });
