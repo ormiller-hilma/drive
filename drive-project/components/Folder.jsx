@@ -16,7 +16,7 @@ function Folder(params) {
     await fetch(`http://localhost:3000/users/${cleanPath}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ newName }),
+      body: JSON.stringify({ content: newName }),
     });
     params.retriggerEffect();
   };

@@ -5,6 +5,7 @@ var runOpenFile = require("../openFile");
 var runDelete = require("../delete");
 const runCreate = require("../create");
 const runRename = require("../rename");
+const Path = require("path")
 
 
 router.get("/*", async function (req, res) {
@@ -60,8 +61,10 @@ router.put("/:id/:path(*)?/:file", async function (req, res) {
 
   const body = req.body
   const path = "../server/database/users";
+  const filePath = `${path}/${id}/${wildcard}/`
+  console.log("extname, " + Path.extname(filePath + file));
   try {
-    const content = await runRename(`${path}/${id}/${wildcard}/`, file, req.body.content);
+    const content = await runRename(filePath, file, body.content + Path.extname(filePath + file));
     res.send({ content });
   } catch (error) {
     console.log('error: ', error);
