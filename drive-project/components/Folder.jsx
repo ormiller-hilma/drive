@@ -9,10 +9,23 @@ function Folder(params) {
     });
     params.retriggerEffect();
   };
+  const handleRename = async () => {
+    const newName = prompt("enter new name");
+    if (!newName) return; // user canceled or empty
+
+    await fetch(`http://localhost:3000/users/${cleanPath}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ newName }),
+    });
+    params.retriggerEffect();
+  };
+
   console.log("this is params.folderPath /clean path: " + cleanPath);
   return (
     <>
       {/* <File name={params.foldername} /> */}
+      <button onClick={() => handleRename()}>rename</button>
 
       <button onClick={() => handleDelete(cleanPath)}> delete</button>
       <Link to={cleanPath}>{params.foldername}</Link>
