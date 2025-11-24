@@ -1,33 +1,92 @@
+/* Soft pink background for the whole app */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-all the Folders h1 {
-  /* text-align: end; */
-  padding-bottom: 10px;
+  background-color: #fff7fa; /* very light pink */
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
 }
 
+/* Title */
+h1 {
+  padding-bottom: 20px;
+  color: #d36da3; /* warm pink */
+}
+
+/* Folder/file row */
 .folder {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
 
-  background-color: rgb(183, 170, 154);
-  padding: 10px 0px;
-  border-radius: 5px;
+  background-color: #ffe4ec; /* soft pastel pink */
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 12px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Hover effect — gentle */
+.folder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* File/folder icon */
+.icon {
+  font-size: 1.6rem;
+  margin-right: 15px;
+}
+
+/* Name of file/folder */
 .fileName {
   margin-right: auto;
-  margin-left: 15px;
+  font-size: 1.1rem;
+  color: #b84b87; /* darker pink */
+  text-decoration: none;
+}
+
+.fileName:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+button {
+  background-color: #f7cfe2; /* soft button pink */
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #8a3b64;
+  font-weight: 500;
+
+  transition: background-color 0.15s ease;
+}
+
+button:hover {
+  background-color: #efb2d1;
+}
+
+/* Breadcrumb links */
+a {
+  color: #d36da3;
 }
 
 hr {
-  /* margin-top: 10px;
-  margin-bottom: 20px; */
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background-color: #ffd1e1;
 }
-
-button {
-  margin: 0 5px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff7fa; /* full page pink */
+  min-height: 100vh;
 }
