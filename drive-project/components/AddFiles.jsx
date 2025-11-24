@@ -17,7 +17,7 @@ function AddFiles({ path, retriggerEffect, user }) {
   const [fileContent, SetFileContent] = useState("");
 
   return (
-    <>
+    <div className="addFiles">
       <label for="fileName">File name:</label>
       <input
         name="fileName"
@@ -49,7 +49,7 @@ function AddFiles({ path, retriggerEffect, user }) {
       >
         Add
       </button>
-    </>
+    </div>
   );
 }
 
