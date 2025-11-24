@@ -78,6 +78,7 @@ function Folders() {
                 filePath={fullPath}
                 foldername={e}
                 currentFiles={data}
+                username={username}
               />
               <br />
             </Fragment>

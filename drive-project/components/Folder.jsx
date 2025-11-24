@@ -28,19 +28,30 @@ function Folder(params) {
     });
     params.retriggerEffect();
   };
-
+  const handleinfo = async (folderPath) => {
+    const res = await fetch(`http://localhost:3000/users/orchuk/ff?info=1`);
+    const stats = await res.json();
+    console.log("stats: ", stats);
+    alert(stats.content ? stats.content[0] : "No info available");
+    params.retriggerEffect();
+  };
   console.log("this is params.folderPath /clean path: " + cleanPath);
   return (
     <div className="folder">
       <span className="icon">{icon}</span>
-
       <Link to={cleanPath} className="fileName">
         {params.foldername}
       </Link>
-
       <button onClick={() => handleRename()}>rename</button>
-
       <button onClick={() => handleDelete(cleanPath)}> delete</button>
+      <button
+        onClick={() => {
+          console.log(`HEY!! ${params.filePath}`);
+          handleinfo(`${params.filePath}`);
+        }}
+      >
+        info
+      </button>
     </div>
   );
 }
