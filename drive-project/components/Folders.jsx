@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { useEffect } from "react";
 import Folder from "./Folder";
 import { useMatch } from "react-router-dom";
+import AddFiles from "./AddFiles";
 // import { Link } from "react-router-dom";
 
 function Folders() {
@@ -33,6 +34,7 @@ function Folders() {
 
   return (
     <>
+      <AddFiles path={filePath} />
       <h1>all the Folders</h1>
       {typeof data !== "string" &&
         data.map((e) => {
