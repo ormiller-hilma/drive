@@ -14,6 +14,16 @@ function Folders() {
   console.log("filePath: ", filePath);
 
   const [data, setData] = useState([]);
+<<<<<<< HEAD
+=======
+  const [trigger, setTrigger] = useState(0);
+
+  const retriggerEffect = () => {
+    setTrigger((prev) => prev + 1); // increment to retrigger
+  };
+
+  const username = "orchuk";
+>>>>>>> 86c4bcb1949c7941a8683cc71e2f162f25179015
   useEffect(() => {
     async function fetchdata(username) {
       try {
@@ -31,11 +41,11 @@ function Folders() {
     }
     console.log("filePath: ", filePath);
     fetchdata(username);
-  }, [filePath, username]);
+  }, [filePath, username, trigger]);
 
   return (
     <>
-      <AddFiles path={filePath} />
+      <AddFiles path={filePath} retriggerEffect={retriggerEffect} />
       <h1>all the Folders</h1>
       {typeof data !== "string" &&
         data.map((e) => {
@@ -45,7 +55,15 @@ function Folders() {
 
           return (
             <Fragment key={e}>
+<<<<<<< HEAD
               <Folder filePath={fullPath} foldername={e} />
+=======
+              <Folder
+                retriggerEffect={retriggerEffect}
+                filePath={"/orchuk/" + filePath + `/${e}`}
+                foldername={e}
+              />{" "}
+>>>>>>> 86c4bcb1949c7941a8683cc71e2f162f25179015
               <br />
             </Fragment>
           );

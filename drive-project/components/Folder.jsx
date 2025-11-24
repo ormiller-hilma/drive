@@ -4,7 +4,10 @@ function Folder(params) {
   const cleanPath = params.filePath.replace(/\/+/g, "/"); // <-- FIXED
 
   const handleDelete = async (folderPath) => {
-    fetch(`http://localhost:3000/users/${folderPath}`, { method: "DELETE" });
+    await fetch(`http://localhost:3000/users/${folderPath}`, {
+      method: "DELETE",
+    });
+    params.retriggerEffect();
   };
   console.log("this is params.folderPath /clean path: " + cleanPath);
   return (
