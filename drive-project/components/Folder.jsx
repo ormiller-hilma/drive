@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 function Folder(params) {
   const cleanPath = params.filePath.replace(/\/+/g, "/"); // <-- FIXED
+  const isFile = params.foldername.includes(".");
+  const icon = isFile ? "📄" : "📁";
 
   const handleDelete = async (folderPath) => {
     await fetch(`http://localhost:3000/users/${folderPath}`, {
@@ -30,6 +32,8 @@ function Folder(params) {
   console.log("this is params.folderPath /clean path: " + cleanPath);
   return (
     <div className="folder">
+      <span className="icon">{icon}</span>
+
       <Link to={cleanPath} className="fileName">
         {params.foldername}
       </Link>
