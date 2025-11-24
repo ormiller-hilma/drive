@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/orchuk/*" element={<Folders />} />
+        <Route path={`/:username/*`} element={<Folders />} />
         {/*i deleted the * bc it create problams */}
 
         {/* <Route

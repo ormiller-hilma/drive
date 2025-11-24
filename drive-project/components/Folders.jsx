@@ -2,16 +2,17 @@ import { Fragment, useState } from "react";
 import { useEffect } from "react";
 import Folder from "./Folder";
 import { Form, useMatch } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Folders() {
-  const match = useMatch("/orchuk/*");
+  const { username } = useParams();
+  const userpath = `/${username}`;
+  const match = useMatch(userpath + "/*");
   const filePath = match.params["*"];
 
   console.log("filePath: ", filePath);
 
   const [data, setData] = useState([]);
-  const username = "orchuk";
   useEffect(() => {
     async function fetchdata(username) {
       try {
@@ -36,12 +37,13 @@ function Folders() {
       <h1>all the Folders</h1>
       {typeof data !== "string" &&
         data.map((e) => {
+          const fullPath = filePath
+            ? `${userpath}/${filePath}/${e}`
+            : `${userpath}/${e}`;
+
           return (
             <Fragment key={e}>
-              <Folder
-                filePath={"/orchuk/" + filePath + `/${e}`}
-                foldername={e}
-              />{" "}
+              <Folder filePath={fullPath} foldername={e} />
               <br />
             </Fragment>
           );

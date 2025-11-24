@@ -12,7 +12,7 @@ function Folder(params) {
       {/* <File name={params.foldername} /> */}
 
       <button onClick={() => handleDelete(cleanPath)}> delete</button>
-      <Link to={cleanPath}>{cleanPath}</Link>
+      <Link to={cleanPath}>{params.foldername}</Link>
     </>
   );
 }
