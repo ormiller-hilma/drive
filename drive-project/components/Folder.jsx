@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 function Folder(params) {
   const cleanPath = params.filePath.replace(/\/+/g, "/"); // <-- FIXED
 
@@ -28,13 +29,15 @@ function Folder(params) {
 
   console.log("this is params.folderPath /clean path: " + cleanPath);
   return (
-    <>
-      {/* <File name={params.foldername} /> */}
+    <div className="folder">
+      <Link to={cleanPath} className="fileName">
+        {params.foldername}
+      </Link>
+
       <button onClick={() => handleRename()}>rename</button>
 
       <button onClick={() => handleDelete(cleanPath)}> delete</button>
-      <Link to={cleanPath}>{params.foldername}</Link>
-    </>
+    </div>
   );
 }
 

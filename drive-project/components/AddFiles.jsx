@@ -17,7 +17,7 @@ function AddFiles({ path, retriggerEffect, user }) {
   const [fileContent, SetFileContent] = useState("");
 
   return (
-    <>
+    <div className="addFiles">
       <input
         type="text"
         onChange={({ target }) => SetFileText(target.value)}
@@ -45,7 +45,7 @@ function AddFiles({ path, retriggerEffect, user }) {
       >
         Add
       </button>
-    </>
+    </div>
   );
 }
 
