@@ -6,15 +6,33 @@ var runDelete = require("../delete");
 const runCreate = require("../create");
 const runRename = require("../rename");
 const Path = require("path")
+const Url = require("url")
+const runInfo = require("../info")
+
+
 
 
 router.get("/*", async function (req, res) {
   const url = req.url;
-  const path = "../server/database/users/";
+  const path = "../server/database/users";
+
+  const parsedUrl = Url.parse(url, true).query;
+  const baseUrl = (path + url).split("?")[0]
+  // console.log('baseUrl: ', baseUrl);
+  // console.log('parsedUrl: ', parsedUrl);
+
+  if (parsedUrl.info) {
+
+    const stats = await runInfo(baseUrl)
+    console.log();
+    res.send({ content: [stats.birthtime, Number(stats.size), stats.isFile()] });
+
+    return;
+  }
 
   //try get files
   try {
-    const dirArray = await runLS(path + `${url}`);
+    const dirArray = await runLS(path + url);
     res.send({ content: dirArray });
   } catch {
 

@@ -36,7 +36,7 @@ function Folder(params) {
 
       <button onClick={() => handleRename()}>rename</button>
 
-      <button onClick={() => handleDelete(cleanPath)}> delete</button>
+      <button onClick={() => handleDelete(cleanPath)}>delete</button>
     </div>
   );
 }

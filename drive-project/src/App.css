@@ -4,8 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-
-h1 {
+all the Folders h1 {
   /* text-align: end; */
   padding-bottom: 10px;
 }
@@ -25,8 +24,8 @@ h1 {
 }
 
 hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  /* margin-top: 10px;
+  margin-bottom: 20px; */
 }
 
 button {
