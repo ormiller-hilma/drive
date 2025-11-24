@@ -29,7 +29,7 @@ function Folder(params) {
     params.retriggerEffect();
   };
   const handleinfo = async (folderPath) => {
-    const res = await fetch(`http://localhost:3000/users/orchuk/ff?info=1`);
+    const res = await fetch(`http://localhost:3000/users/orchuk/fff/?info=1`);
     const stats = await res.json();
     console.log("stats: ", stats);
     alert(stats.content ? stats.content[0] : "No info available");

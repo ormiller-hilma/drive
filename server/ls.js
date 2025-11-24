@@ -1,5 +1,6 @@
 const fs = require("fs/promises");
 const path = require("node:path");
+const info = require("./info")
 
 async function runLS(path) {
   const arr = await fs.readdir(path);
