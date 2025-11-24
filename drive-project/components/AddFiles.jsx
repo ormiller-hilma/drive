@@ -12,7 +12,7 @@ async function AddFile(url, content) {
   console.log("POSTED");
 }
 
-function AddFiles({ path, retriggerEffect }) {
+function AddFiles({ path, retriggerEffect, user }) {
   const [fileText, SetFileText] = useState("");
   const [fileContent, SetFileContent] = useState("");
 
@@ -37,7 +37,7 @@ function AddFiles({ path, retriggerEffect }) {
       <button
         onClick={async () => {
           await AddFile(
-            `http://localhost:3000/users/orchuk/${path}/${fileText}`,
+            `http://localhost:3000/users/${user}/${path}/${fileText}`,
             fileContent
           );
           retriggerEffect();

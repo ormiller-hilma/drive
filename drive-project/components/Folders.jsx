@@ -42,7 +42,11 @@ function Folders() {
 
   return (
     <>
-      <AddFiles path={filePath} retriggerEffect={retriggerEffect} />
+      <AddFiles
+        path={filePath}
+        retriggerEffect={retriggerEffect}
+        user={username}
+      />
       <h1>all the Folders</h1>
       {typeof data !== "string" &&
         data.map((e) => {
