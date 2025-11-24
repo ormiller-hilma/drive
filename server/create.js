@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("node:path");
 
 async function runCreate(path, fileName, content) {
+  console.log("F");
   // test if there is a file extention
   if (/.\../.test(fileName)) {
     fs.writeFile(path + fileName, content, (err) => {

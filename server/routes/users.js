@@ -51,13 +51,15 @@ router.delete("/:id/*", async function (req, res) {
   }
 });
 
-router.post("/:id/:file", async function (req, res, next) {
-  const id = req.params.id;
-  const file = req.params.file;
+router.post("/:id/:path(*)?/:file", async function (req, res, next) {
+  const { id, file } = req.params;
+  const wildcard = req.params.path || "";
+
   const body = req.body
-  const path = "../server/database`${path}/${url}`";
+  const path = "../server/database/users";
+  console.log(`${path}/${id}/${wildcard}/`);
   try {
-    const content = await runCreate(`${path}/${id}/`, file, body.content);
+    const content = await runCreate(`${path}/${id}/${wildcard}/`, file, body.content);
     res.send({ content });
   } catch {
     res.send({ err: "COULD NOT CREATE" });
